@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}Studio Digital - Home{% endblock %}
+
+{% block content %}
+    <header class="header">
+        <h1>Bem-vindo ao Studio</h1>
+        <p>Criando experiências digitais excepcionais</p>
+    </header>
+
+    <section class="content">
+        <!-- About Section -->
+        <section class="section" id="inicio">
+            <h2 class="section-title">Sobre Nós</h2>
+            <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.8; margin-top: 30px;">
+                Somos um estúdio digital dedicado a criar soluções inovadoras e visualmente impressionantes. 
+                Nossa equipe combina design criativo com tecnologia de ponta para transformar ideias em realidade.
+            </p>
+            <button class="btn">Conheça Nosso Trabalho</button>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section" id="servicos">
+            <h2 class="section-title">Serviços</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Design Web</h3>
+                    <p>Criamos interfaces web modernas e responsivas que capturam a essência da sua marca.</p>
+                </div>
+                <div class="card">
+                    <h3>Desenvolvimento</h3>
+                    <p>Transformamos designs em código limpo, rápido e escalável com as melhores práticas.</p>
+                </div>
+                <div class="card">
+                    <h3>Consultoria Digital</h3>
+                    <p>Orientamos sua estratégia digital para maximizar resultados e alcançar seus objetivos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="section" id="portfolio">
+            <h2 class="section-title">Portfólio</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Projeto Minimalista</h3>
+                    <p>Um e-commerce elegante com foco em experiência do usuário e conversão.</p>
+                </div>
+                <div class="card">
+                    <h3>Dashboard Executivo</h3>
+                    <p>Painel de análise em tempo real com visualizações de dados avançadas.</p>
+                </div>
+                <div class="card">
+                    <h3>Plataforma SaaS</h3>
+                    <p>Sistema de gerenciamento completo com interface intuitiva e moderna.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Studio Digital. Todos os direitos reservados.</p>
+    </footer>
+{% endblock %}

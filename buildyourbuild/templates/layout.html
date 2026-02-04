@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Studio Digital{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">STUDIO</div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#inicio" class="nav-link active">
+                    <span>🏠</span> Início
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#servicos" class="nav-link">
+                    <span>⚙️</span> Serviços
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#portfolio" class="nav-link">
+                    <span>🎨</span> Portfólio
+                </a>
+            </li>
+        </ul>
+
+        <div class="nav-divider"></div>
+
+        <div class="nav-section-title">Recursos</div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#docs" class="nav-link">
+                    <span>📚</span> Documentação
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#blog" class="nav-link">
+                    <span>📝</span> Blog
+                </a>
+            </li>
+        </ul>
+
+        <div class="nav-divider"></div>
+
+        <div class="nav-section-title">Suporte</div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#contato" class="nav-link">
+                    <span>💬</span> Contato
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#faq" class="nav-link">
+                    <span>❓</span> FAQ
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
