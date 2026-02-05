@@ -11,7 +11,7 @@
     --text-secondary: #b0b0b0;
     --accent: #ff6b35;
     --accent-light: #ff8c5a;
-    --sidebar-width: 280px;
+    --sidebar-width: 160px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -31,17 +31,21 @@ body {
     height: 100vh;
     background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
     border-right: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 40px 30px;
+    padding: 20px 15px;
     overflow-y: auto;
     z-index: 1000;
     transition: var(--transition);
 }
 
 .logo {
+    display: block;
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding-bottom: 30px;
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -60,12 +64,12 @@ body {
 .nav-link {
     text-decoration: none;
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 16px;
+    padding: 8px 12px;
     border-radius: 8px;
     transition: var(--transition);
     position: relative;
@@ -330,6 +334,7 @@ body {
 
     .logo {
         font-size: 20px;
+        margin-bottom: 20px;
     }
 
     .header h1 {
