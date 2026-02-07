@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}Studio Digital - Personagem{% endblock %}
+
+{% block content %}
+    <header class="header">
+        <h1>Seus Personagens</h1>
+        <p>Crie e gerencie todos os seus personagens aqui!</p>
+    </header>
+
+    <section>
+        <h1>Personagens</h1>
+
+        {% for personagem in personagens %}
+            <article class= "personagem">
+                <h2>
+                    <a href ="{% url 'personagem:personagem' slug=personagem.slug %}">
+                        {{ personagem.title }}
+                    </a>
+                </h2>
+                <p>{{ personagem.date }}</p>
+                <p>{{ personagem.body }}</p>
+            </article>
+        {% endfor %}
+    </section>
+    <footer class="footer">
+        <p>&copy; 2024 Studio Digital. Todos os direitos reservados.</p>
+    </footer>
+{% endblock %}

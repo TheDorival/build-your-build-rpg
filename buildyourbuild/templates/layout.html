@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Studio Digital{% endblock %}</title>
+    <title>{% block title %}Build Your Build{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}"
 </head>
 <body>
@@ -14,18 +14,18 @@
         
         <ul class="nav-menu">
             <li class="nav-item">
-                <a href="#inicio" class="nav-link active">
+                <a href="/" class="nav-link active" data-nav-type="home">
                     <span>🏠</span> Início
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#servicos" class="nav-link">
-                    <span>⚙️</span> Serviços
+                <a href="#sistemas" class="nav-link" data-nav-type="anchor">
+                    <span>📚</span> Sistemas RPG
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#portfolio" class="nav-link">
-                    <span>🎨</span> Portfólio
+                <a href="#funcoes" class="nav-link" data-nav-type="anchor">
+                    <span>⚙️</span> Funções 
                 </a>
             </li>
         </ul>
@@ -35,13 +35,13 @@
         <div class="nav-section-title">Recursos</div>
         <ul class="nav-menu">
             <li class="nav-item">
-                <a href="/personagem" class="nav-link">
-                    <span>📚</span> Personagem
+                <a href="{% url 'personagem:personagens' %}" class="nav-link" data-nav-type="page">
+                    <span>📚</span> Personagens
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#blog" class="nav-link">
-                    <span>📝</span> Blog
+                <a href="#blog" class="nav-link" data-nav-type="anchor">
+                    <span>📝</span> Criar
                 </a>
             </li>
         </ul>
@@ -51,12 +51,12 @@
         <div class="nav-section-title">Suporte</div>
         <ul class="nav-menu">
             <li class="nav-item">
-                <a href="#contato" class="nav-link">
+                <a href="#contato" class="nav-link" data-nav-type="anchor">
                     <span>💬</span> Contato
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#faq" class="nav-link">
+                <a href="#faq" class="nav-link" data-nav-type="anchor">
                     <span>❓</span> FAQ
                 </a>
             </li>

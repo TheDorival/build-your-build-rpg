@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ personagem.title }}
+{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>{{ personagem.title }}</h1>
+        <p>{{ personagem.date }}</p>
+        <p>{{ personagem.body }}</p>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 BuildYourBuild. Todos os direitos reservados.</p>
+    </footer>
+{% endblock %}
