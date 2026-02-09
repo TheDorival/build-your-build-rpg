@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Build Your Build{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"
+    {% block extra_css %}{% endblock  %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <!-- Sidebar Navigation -->
@@ -15,15 +16,20 @@
         <ul class="nav-menu">
             <li class="nav-item">
                 <a href="/" class="nav-link active" data-nav-type="home">
+                <a href="/" class="nav-link active" data-nav-type="home">
                     <span>🏠</span> Início
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#sistemas" class="nav-link" data-nav-type="anchor">
                     <span>📚</span> Sistemas RPG
+                <a href="#sistemas" class="nav-link" data-nav-type="anchor">
+                    <span>📚</span> Sistemas RPG
                 </a>
             </li>
             <li class="nav-item">
+                <a href="#funcoes" class="nav-link" data-nav-type="anchor">
+                    <span>⚙️</span> Funções 
                 <a href="#funcoes" class="nav-link" data-nav-type="anchor">
                     <span>⚙️</span> Funções 
                 </a>
@@ -37,9 +43,13 @@
             <li class="nav-item">
                 <a href="{% url 'personagem:personagens' %}" class="nav-link" data-nav-type="page">
                     <span>📚</span> Personagens
+                <a href="{% url 'personagem:personagens' %}" class="nav-link" data-nav-type="page">
+                    <span>📚</span> Personagens
                 </a>
             </li>
             <li class="nav-item">
+                <a href="#blog" class="nav-link" data-nav-type="anchor">
+                    <span>📝</span> Criar
                 <a href="#blog" class="nav-link" data-nav-type="anchor">
                     <span>📝</span> Criar
                 </a>
@@ -52,10 +62,12 @@
         <ul class="nav-menu">
             <li class="nav-item">
                 <a href="#contato" class="nav-link" data-nav-type="anchor">
+                <a href="#contato" class="nav-link" data-nav-type="anchor">
                     <span>💬</span> Contato
                 </a>
             </li>
             <li class="nav-item">
+                <a href="#faq" class="nav-link" data-nav-type="anchor">
                 <a href="#faq" class="nav-link" data-nav-type="anchor">
                     <span>❓</span> FAQ
                 </a>

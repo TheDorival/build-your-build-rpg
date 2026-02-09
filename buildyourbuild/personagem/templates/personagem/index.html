@@ -1,29 +1,81 @@
 {% extends "layout.html" %}
+{% load static %}
 
-{% block title %}Studio Digital - Personagem{% endblock %}
+{% block title %}Seus Personagens - Build Your Build{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/personagens.css' %}">
+{% endblock %}
 
 {% block content %}
     <header class="header">
         <h1>Seus Personagens</h1>
-        <p>Crie e gerencie todos os seus personagens aqui!</p>
+        <p>Crie e gerencie todos os seus personagens de RPG em um só lugar!</p>
     </header>
 
-    <section>
+    <section class="personagens-section">
+        <!-- Controles de busca e filtros -->
+        <div class="personagens-controls">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    placeholder="Buscar personagens... (Ctrl+K)" 
+                    id="searchPersonagens"
+                    autocomplete="off"
+                >
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+
         <h1>Personagens</h1>
 
-        {% for personagem in personagens %}
-            <article class= "personagem">
-                <h2>
-                    <a href ="{% url 'personagem:personagem' slug=personagem.slug %}">
-                        {{ personagem.title }}
-                    </a>
-                </h2>
-                <p>{{ personagem.date }}</p>
-                <p>{{ personagem.body }}</p>
-            </article>
-        {% endfor %}
+        {% if personagens %}
+            <div class="personagem-grid">
+                {% for personagem in personagens %}
+                    <article class="personagem">
+                        <!-- Badge opcional (descomente e ajuste se quiser) -->
+                        <!-- <span class="personagem-badge">Novo</span> -->
+                        
+                        <h2>
+                            <a href="{% url 'personagem:personagem' slug=personagem.slug %}">
+                                {{ personagem.title }}
+                            </a>
+                        </h2>
+                        
+                        <p class="personagem-date">{{ personagem.date|date:"d/m/Y" }}</p>
+                        
+                        <p class="personagem-body">{{ personagem.body|truncatewords:30 }}</p>
+                        
+                        <!-- Link de ação (aparece no hover) -->
+                        <a href="{% url 'personagem:personagem' slug=personagem.slug %}" class="personagem-action">
+                            Ver detalhes
+                        </a>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <!-- Estado vazio -->
+            <div class="empty-state">
+                <div class="empty-state-icon">🎭</div>
+                <h3>Nenhum personagem ainda</h3>
+                <p>Comece sua jornada criando seu primeiro personagem épico!</p>
+                <a href="#criar" class="btn">
+                    ✨ Criar Primeiro Personagem
+                </a>
+            </div>
+        {% endif %}
     </section>
+
+    <!-- Botão flutuante para criar novo personagem -->
+    <a href="#criar" class="create-character-btn" title="Criar novo personagem">
+        +
+    </a>
+
     <footer class="footer">
-        <p>&copy; 2024 Studio Digital. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Build Your Build. Todos os direitos reservados.</p>
     </footer>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/personagens.js' %}"></script>
 {% endblock %}
