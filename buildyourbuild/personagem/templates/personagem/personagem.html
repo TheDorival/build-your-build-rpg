@@ -1,17 +1,164 @@
 {% extends "layout.html" %}
+{% load static %}
 
-{% block title %}
-    {{ personagem.title }}
+{% block title %}{{ personagem.title }} - Build Your Build{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/personagem.css' %}">
 {% endblock %}
 
 {% block content %}
-    <section>
-        <h1>{{ personagem.title }}</h1>
-        <p>{{ personagem.date }}</p>
-        <p>{{ personagem.body }}</p>
-    </section>
+    <article class="personagem-detail">
+        <!-- Banner do Personagem (se existir) -->
+        {% if personagem.banner %}
+            <div class="personagem-banner-container">
+                <img
+                    class="personagem-banner"
+                    src="{{ personagem.banner.url }}"
+                    alt="{{ personagem.title }}"
+                />
+            </div>
+        {% else %}
+            <div class="personagem-banner-container no-banner">
+                <div class="no-banner-placeholder">
+                    <div class="no-banner-icon">🎭</div>
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Conteúdo Principal -->
+        <div class="personagem-content {% if personagem.banner %}has-banner{% endif %}">
+            
+            <!-- Botão Voltar -->
+            <a href="{% url 'personagem:personagens' %}" class="back-button">
+                Voltar para Personagens
+            </a>
+
+            <!-- Header -->
+            <header class="personagem-header">
+                <h1>{{ personagem.title }}</h1>
+                
+                <!-- Meta Informações -->
+                <div class="personagem-meta">
+                    <div class="personagem-meta-item">
+                        <span class="icon">📅</span>
+                        <span>Criado em: <strong>{{ personagem.date|date:"d/m/Y" }}</strong></span>
+                    </div>
+                    <div class="personagem-meta-item">
+                        <span class="icon">✏️</span>
+                        <span>Última edição: <strong>{{ personagem.date|date:"d/m/Y" }}</strong></span>
+                    </div>
+                    {% if personagem.sistema %}
+                    <div class="personagem-meta-item">
+                        <span class="icon">🎲</span>
+                        <span>Sistema: <strong>{{ personagem.sistema }}</strong></span>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Tags (exemplo - pode adicionar campo no modelo depois) -->
+                <div class="personagem-tags">
+                    <span class="tag">Personagem</span>
+                    <!-- Adicione mais tags conforme necessário -->
+                    <!-- <span class="tag">Guerreiro</span> -->
+                    <!-- <span class="tag">Nível 5</span> -->
+                </div>
+            </header>
+
+            <!-- Corpo/Descrição -->
+            <div class="personagem-body">
+                {{ personagem.body|linebreaks }}
+            </div>
+
+            <!-- Seção de Atributos/Stats (Temporário - para expandir depois) -->
+            <div class="personagem-stats animate-in">
+                <h3>⚔️ Informações do Personagem</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Nível</span>
+                        <span class="stat-value">--</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Classe</span>
+                        <span class="stat-value">--</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Raça</span>
+                        <span class="stat-value">--</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">XP</span>
+                        <span class="stat-value">--</span>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; font-size: 14px; color: var(--text-secondary); font-style: italic;">
+                    💡 Mais atributos serão adicionados em breve!
+                </p>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="personagem-actions">
+                <a href="#editar" class="btn-action">
+                    <span>✏️</span>
+                    Editar Personagem
+                </a>
+                <button class="btn-action secondary" onclick="window.print()">
+                    <span>🖨️</span>
+                    Imprimir Ficha
+                </button>
+                <button class="btn-action secondary" onclick="compartilhar()">
+                    <span>📤</span>
+                    Compartilhar
+                </button>
+            </div>
+
+        </div>
+    </article>
 
     <footer class="footer">
-        <p>&copy; 2026 BuildYourBuild. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Build Your Build. Todos os direitos reservados.</p>
     </footer>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        // Função para compartilhar
+        function compartilhar() {
+            if (navigator.share) {
+                navigator.share({
+                    title: '{{ personagem.title }}',
+                    text: 'Confira meu personagem: {{ personagem.title }}',
+                    url: window.location.href
+                }).catch(err => console.log('Erro ao compartilhar:', err));
+            } else {
+                // Fallback: copiar URL
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('Link copiado para área de transferência!');
+                });
+            }
+        }
+
+        // Animação de entrada dos elementos
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.animate-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
 {% endblock %}

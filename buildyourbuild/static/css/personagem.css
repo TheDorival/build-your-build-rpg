@@ -1,0 +1,419 @@
+/* ==========================================
+   PERSONAGEM DETAIL PAGE - SPECIFIC STYLES
+   ========================================== */
+
+/* Container do Personagem */
+.personagem-detail {
+    position: relative;
+    z-index: 5;
+}
+
+/* Banner do Personagem */
+.personagem-banner {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.personagem-banner-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin-bottom: -100px; /* Overlap com conteúdo */
+}
+
+.personagem-banner-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, var(--bg-dark) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.personagem-banner-container.no-banner {
+    height: 200px;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+    margin-bottom: 0;
+}
+
+/* Conteúdo Principal */
+.personagem-content {
+    position: relative;
+    z-index: 10;
+    padding: 60px 50px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.personagem-content.has-banner {
+    padding-top: 0;
+}
+
+/* Header do Personagem */
+.personagem-header {
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.personagem-header h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 48px;
+    margin-bottom: 15px;
+    letter-spacing: -1.5px;
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+}
+
+.personagem-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius: 2px;
+}
+
+/* Meta informações */
+.personagem-meta {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.personagem-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.personagem-meta-item .icon {
+    font-size: 18px;
+    color: var(--accent);
+}
+
+.personagem-meta-item strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Corpo do Personagem */
+.personagem-body {
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    margin-top: 40px;
+    animation: fadeIn 1s ease-out 0.3s backwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.personagem-body p {
+    margin-bottom: 20px;
+}
+
+.personagem-body h2,
+.personagem-body h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--text-primary);
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.personagem-body h2 {
+    font-size: 32px;
+    letter-spacing: -0.5px;
+}
+
+.personagem-body h3 {
+    font-size: 24px;
+}
+
+/* Seção de Atributos (Card) */
+.personagem-stats {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 107, 53, 0.2);
+    border-radius: 16px;
+    padding: 35px;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.personagem-stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0%, 100% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+}
+
+.personagem-stats h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: var(--accent);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent-light);
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* Botões de Ação */
+.personagem-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 50px 0 30px;
+    padding: 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.btn-action:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
+}
+
+.btn-action:active {
+    transform: translateY(-1px);
+}
+
+.btn-action.secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    box-shadow: none;
+}
+
+.btn-action.secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent);
+}
+
+/* Botão Voltar */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    padding: 8px 0;
+}
+
+.back-button:hover {
+    color: var(--accent);
+    transform: translateX(-5px);
+}
+
+.back-button::before {
+    content: '←';
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover::before {
+    transform: translateX(-3px);
+}
+
+/* Tags/Labels */
+.personagem-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(255, 107, 53, 0.15);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background: rgba(255, 107, 53, 0.25);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Placeholder para quando não há banner */
+.no-banner-placeholder {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+    margin-bottom: 40px;
+}
+
+.no-banner-icon {
+    font-size: 80px;
+    opacity: 0.3;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .personagem-banner-container {
+        height: 300px;
+        margin-bottom: -60px;
+    }
+
+    .personagem-content {
+        padding: 40px 25px;
+    }
+
+    .personagem-header h1 {
+        font-size: 36px;
+    }
+
+    .personagem-meta {
+        gap: 15px;
+    }
+
+    .personagem-body {
+        font-size: 16px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .personagem-actions {
+        flex-direction: column;
+    }
+
+    .btn-action {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .personagem-banner-container {
+        height: 250px;
+    }
+
+    .personagem-header h1 {
+        font-size: 28px;
+    }
+
+    .personagem-body {
+        font-size: 15px;
+    }
+
+    .personagem-stats {
+        padding: 25px 20px;
+    }
+}
+
+/* Animações de entrada */
+.animate-in {
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
