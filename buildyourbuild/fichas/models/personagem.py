@@ -1,9 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 
-# Create your models here.
-
-class Personagens(models.Model):
+class Personagem(models.Model):
 
     class Meta:
         verbose_name = 'Personagem'

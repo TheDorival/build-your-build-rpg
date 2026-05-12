@@ -1,9 +1,9 @@
 from django.contrib import admin
-from . models import Personagens
+from . models import Personagem
 
 # Register your models here.
 
-@admin.register(Personagens)
+@admin.register(Personagem)
 class PersonagemAdmin(admin.ModelAdmin):
     list_display = ['title', 'date', 'updated']
     list_filter = ['date', 'updated']
