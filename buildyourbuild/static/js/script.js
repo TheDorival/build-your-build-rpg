@@ -1,23 +1,9 @@
-// Função para fazer scroll suave com offset automático
+// Função para fazer scroll suave com offset da navbar fixa
 function smoothScrollToElement(element) {
-    const header = document.querySelector('.header');
-    
-    let offset = 0;
-    
-    // Calcula a altura do header se existir
-    if (header) {
-        offset += header.offsetHeight;
-    }
-    
-    // Adiciona margem extra para ficar mais bonito
-    offset += 20;
-    
+    const navbar = document.querySelector('.navbar');
+    const offset = (navbar ? navbar.offsetHeight : 0) + 20;
     const targetPosition = element.offsetTop - offset;
-    
-    window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-    });
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
 }
 
 // Marca o link ativo baseado na página atual
@@ -117,10 +103,19 @@ document.querySelectorAll('a.nav-link').forEach(link => {
     });
 });
 
-// Executa quando a página carrega
+// Mobile nav toggle
 document.addEventListener('DOMContentLoaded', function() {
     setActiveLink();
     checkAndScrollToAnchor();
+
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('.navbar .nav-menu');
+    if (toggle && menu) {
+        toggle.addEventListener('click', () => menu.classList.toggle('open'));
+        menu.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => menu.classList.remove('open'));
+        });
+    }
 });
 
 // Atualiza quando volta para a página anterior (histórico do navegador)

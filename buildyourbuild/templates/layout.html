@@ -9,60 +9,36 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-        <a  href="/" class="logo">ByB</a>
-        
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <a href="/" class="logo">ByB</a>
+
+        <button class="nav-toggle" aria-label="Abrir menu">&#9776;</button>
+
         <ul class="nav-menu">
             <li class="nav-item">
-                <a href="/" class="nav-link active" data-nav-type="home">
-                    <span role="img" arial-label="Casa">🏠</span> Início
-                </a>
+                <a href="/" class="nav-link active" data-nav-type="home">🏠 Início</a>
             </li>
             <li class="nav-item">
-                <a href="#sistemas" class="nav-link" data-nav-type="anchor">
-                    <span role="img" arial-label="Livros">📚</span> Sistemas RPG
-                </a>
+                <a href="#sistemas" class="nav-link" data-nav-type="anchor">📚 Sistemas RPG</a>
             </li>
             <li class="nav-item">
-                <a href="#funcoes" class="nav-link" data-nav-type="anchor">
-                    <span role="img" arial-label="Engrenagem">⚙️</span> Funções 
-                </a>
+                <a href="#funcoes" class="nav-link" data-nav-type="anchor">⚙️ Funções</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'personagem:personagens' %}" class="nav-link" data-nav-type="page">📖 Personagens</a>
+            </li>
+            <li class="nav-item">
+                <a href="#blog" class="nav-link" data-nav-type="anchor">📝 Criar</a>
+            </li>
+            <li class="nav-item">
+                <a href="#contato" class="nav-link" data-nav-type="anchor">💬 Contato</a>
+            </li>
+            <li class="nav-item">
+                <a href="#faq" class="nav-link" data-nav-type="anchor">❓ FAQ</a>
             </li>
         </ul>
-
-        <div class="nav-divider"></div>
-
-        <div class="nav-section-title">Recursos</div>
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="{% url 'personagem:personagens' %}" class="nav-link" data-nav-type="page">
-                    <span role="img" arial-label="Livros">📚</span> Personagens
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#blog" class="nav-link" data-nav-type="anchor">
-                    <span role="img" arial-label="Papel e lápis">📝</span> Criar
-                </a>
-            </li>
-        </ul>
-
-        <div class="nav-divider"></div>
-
-        <div class="nav-section-title">Suporte</div>
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="#contato" class="nav-link" data-nav-type="anchor">
-                    <span role="img" arial-label="Balão de fala">💬</span> Contato
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#faq" class="nav-link" data-nav-type="anchor">
-                    <span role="img" arial-label="Interrogação vermelha">❓</span> FAQ
-                </a>
-            </li>
-        </ul>
-    </aside>
+    </nav>
 
     <!-- Main Content -->
     <main class="main">
